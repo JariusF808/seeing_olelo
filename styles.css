@@ -1,0 +1,109 @@
+:root {
+  --primary:#2E8B57;   
+  --secondary:#FF7F50; 
+  --accent:#FFD700;    
+  --bg:#FFF8E7;        
+  --card:#FFFFFFDD;   
+  --ink:#2F2F2F;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  background-color: var(--bg); 
+  background-image: url('https://i.ibb.co/7ybz1qc/tropical-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  min-height:100vh;
+  color:var(--ink);
+}
+
+aside {
+  backdrop-filter: blur(8px);
+  background: var(--card);
+  border-right: 3px solid var(--secondary);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+main {
+  padding:18px;
+  background-color: var(--bg);
+  backdrop-filter: blur(4px);
+}
+
+h1 {
+  margin:0 0 10px 0;
+  font-size:26px;
+  font-family: "Papyrus", cursive;
+  color: var(--primary);
+  text-shadow: 1px 1px 0px var(--accent);
+}
+
+.nav button {
+  width:100%; padding:12px 14px; font-size:16px;
+  border-radius:10px; border:none; cursor:pointer;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color:#fff; font-weight:600; letter-spacing:0.5px;
+  box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.nav button:hover { transform: scale(1.05); }
+.nav button.active { outline:3px solid var(--accent); }
+
+.screen { display:none; }
+.screen.active { display:block; }
+
+/* Camera area */
+.camera-wrap {
+  position:relative; max-width:900px; margin:0 auto;
+  border-radius:14px; overflow:hidden;
+  border:3px solid var(--primary);
+  aspect-ratio: 3/4;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+video, canvas {
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+}
+.shutter {
+  position:absolute; left:50%; transform:translateX(-50%); bottom:14px;
+  width:60px; height:60px; border-radius:50%;
+  border:4px solid var(--accent); background:var(--secondary);
+  box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+.hud {
+  position:absolute; inset:auto 10px 80px 10px;
+  display:flex; justify-content:center; pointer-events:none;
+}
+.chip {
+  font-weight:700; padding:10px 14px;
+  border-radius:999px;
+  background:var(--card);
+  border:2px solid var(--secondary);
+  color: var(--primary);
+  text-shadow: 1px 1px 0px #fff;
+}
+
+/* Settings + About */
+.fieldset, .card {
+  max-width:720px;
+  background:var(--card);
+  padding:18px; border-radius:12px;
+  border:2px solid var(--secondary);
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.row { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px }
+.row label { font-weight:600; color:var(--primary); }
+.note { color:#444; font-size:14px; }
+.card h2 { color: var(--secondary); }
+
+.mono {font-family: monospace; font-size:12px; color:#555;}
