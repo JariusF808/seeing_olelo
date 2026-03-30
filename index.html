@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seeing ʻŌlelo</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- TensorFlow.js + COCO-SSD -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+</head>
+<body>
+  <aside>
+    <div class="brand"><h1>Seeing ʻŌlelo</h1></div>
+    <div class="nav">
+      <button data-goto="start" class="active">Start</button>
+      <button data-goto="settings">Settings</button>
+      <button data-goto="about">About</button>
+    </div>
+    <div class="mono">v0.1 • demo build</div>
+  </aside>
+
+  <main>
+    <!-- Start Screen -->
+    <section id="start" class="screen active">
+      <div class="camera-wrap" id="camWrap">
+        <video id="camera" autoplay playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="hud">
+          <div id="liveLabel" class="chip" style="font-size: clamp(14px, var(--labelSize, 18px), 40px)">—</div>
+        </div>
+        <button class="shutter" id="shutter" title="Capture (demo)"></button>
+      </div>
+      <p class="note" style="max-width:900px;margin:10px auto 0">
+        Point the camera and objects will be labeled in <b>ʻŌlelo Hawaiʻi</b> with English translation.
+      </p>
+    </section>
+
+    <!-- Settings Screen -->
+    <section id="settings" class="screen">
+      <div class="fieldset">
+        <div class="row">
+          <label for="txtSize">Size of text</label>
+          <input type="range" id="txtSize" min="14" max="40" value="22" />
+        </div>
+        <div class="row">
+          <label>Allow Camera</label>
+          <input type="checkbox" id="allowCamera" checked />
+        </div>
+        <div class="row">
+          <label>Allow Microphone (optional)</label>
+          <input type="checkbox" id="allowMic" />
+        </div>
+        <div class="row">
+          <label for="lang">Choose language</label>
+          <select id="lang">
+            <option value="haw">ʻŌlelo Hawaiʻi → (English)</option>
+            <option value="en">English → (ʻŌlelo Hawaiʻi)</option>
+          </select>
+        </div>
+        <div class="note">Settings are saved in your browser.</div>
+      </div>
+    </section>
+
+    <!-- About Screen -->
+    <section id="about" class="screen">
+      <div class="card">
+        <h2>About Our App</h2>
+        <p>
+          The purpose of <b>Seeing ʻŌlelo</b> is to use your camera to recognize items and display their names in ʻŌlelo Hawaiʻi, with English translations.
+        </p>
+        <p>
+          This demo uses an on-device AI model (COCO-SSD). Add more translations in the code’s <code>hawMap</code> section, found in the JS section of our code.
+        </p>
+      </div>
+    </section>
+  </main>
+  <!-- Link to external JS -->
+  <script src="script.js"></script>
+</body>
+</html>
